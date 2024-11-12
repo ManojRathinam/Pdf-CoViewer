@@ -110,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Allow your frontend origin
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Add your frontend URL here
+    "https://your-render-front-end-url.onrender.com",
 ]
 
 # If you're using Django 4.0+
@@ -157,6 +158,8 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
