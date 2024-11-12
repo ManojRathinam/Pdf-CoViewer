@@ -1,7 +1,12 @@
-# pdf_sync/routing.py
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
 from django.urls import path
-from pdfviewer.consumers import PDFSyncConsumer
+from pdfviewer.consumers import PdfConsumer
 
-websocket_urlpatterns = [
-    path('ws/pdf_sync/', PDFSyncConsumer.as_asgi()),
-]
+application = ProtocolTypeRouter({
+    "websocket": AuthMiddlewareStack(
+        URLRouter([
+            path('ws/pdf/', PdfConsumer.as_asgi()),
+        ])
+    ),
+})
